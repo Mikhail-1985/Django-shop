@@ -5,8 +5,15 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
+from django.urls import reverse
+
 
 User = get_user_model()
+
+
+def get_product_url(obj, viewname):
+    ct_model = obj.__class__.meta.model_name
+    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
 
 
 class MinResolutionErrorException(Exception):
@@ -66,7 +73,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     image = models.ImageField(verbose_name='Изображение')
-    descripyion = models.TextField(verbose_name='Описание', null=True)
+    description = models.TextField(verbose_name='Описание', null=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
 
 
@@ -98,6 +105,9 @@ class Notebook(Product):
     def __str__(self):
         return f'{self.category.name} : {self.title}'
 
+    def get_absolut_url(self):
+        return get_product_url(self, 'product_detail')
+
 
 class Smartphone(Product):
 
@@ -113,6 +123,9 @@ class Smartphone(Product):
 
     def __str__(self):
         return f'{self.category.name} : {self.title}'
+
+    def get_absolut_url(self):
+        return get_product_url(self, 'product_detail')
 
 
 # Товары в корзине
