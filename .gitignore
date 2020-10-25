@@ -58,6 +58,7 @@ coverage.xml
 # Django stuff:
 settings.py
 /settings.py
+shop/settings.py
 *.log
 local_settings.py
 db.sqlite3
