@@ -1,17 +1,21 @@
-# Сайт-аукцион с элитной недвижимостью
+# Интернет магазин iPear
 
 ## Установка
 
-1. Клонируйте репозиторий, создайте виртуальное окружение
-2. Установите зависимости `pip install -r requirements.txt`
-3. Создайте файл config.py и создайте в нем переменные:
-  ```
-  basedir = os.path.abspath(os.path.dirname(__file__))
-
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '..', 'webapp.db')
-
-REMEMBER_COOKIE_DURATION = timedelta(days=10)
-
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-SECRET_KEY = 'Впишите Ваш секретный ключ шифрования'
-  ```
+1. Клонируйте репозиторий, создайте виртуальное окружение:
+```
+git clone https://github.com/Mikhail-1985/Django_shop.git
+```
+3. Создайте виртуальное окружение:
+```
+python -m venv <Ваше название окружения>
+```
+4. Установите зависимости:
+```
+pip install -r requirements.txt
+```
+5. Создайте директорию `media`, куда будут сохраняться изображения для товара.
+6. Запустите сервер:
+```
+python manage.py runserver
+```
