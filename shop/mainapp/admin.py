@@ -46,8 +46,6 @@ class NotebookAdmin(admin.ModelAdmin):
 class SmartphoneAdminForm(ModelForm):
 
 
-
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].help_text = mark_safe(
